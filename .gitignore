@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.vscode/
+.idea/
+*~
+
+# Dataset files
+Data/UC/LIMUC/Images/
+
+# Generated active-learning datasets
+Experiments/Ranknet/Bayesian/LIMUC/Add_dataset/
+
+# Experimental results / trained models
+Experiments/Ranknet/Bayesian/LIMUC/Results/
+
+# Model files
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+
+# Logs
+*.log
