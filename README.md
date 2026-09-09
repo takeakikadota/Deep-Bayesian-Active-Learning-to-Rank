@@ -1,6 +1,6 @@
 # Deep Bayesian Active Learning-to-Rank
 
-Official code release for the paper:
+Code for the paper:
 
 **Deep Bayesian Active Learning-to-Rank with Relative Annotation for Estimation of Ulcerative Colitis Severity**
 
