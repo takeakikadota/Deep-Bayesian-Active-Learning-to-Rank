@@ -178,11 +178,15 @@ In the experiments reported in the paper, the number of active-learning iteratio
 If you use this code in your research, please cite:
 
 ```bibtex
-@article{kadota2024deep,
-  title={Deep Bayesian Active Learning-to-Rank with Relative Annotation for Estimation of Ulcerative Colitis Severity},
-  author={Kadota, Takeaki and Hayashi, Hideaki and Bise, Ryoma and Tanaka, Kiyohito and Uchida, Seiichi},
-  journal={Medical Image Analysis},
-  year={2024},
-  doi={10.1016/j.media.2024.103262}
+@article{KADOTA2024103262,
+  title   = {Deep Bayesian active learning-to-rank with relative annotation for estimation of ulcerative colitis severity},
+  journal = {Medical Image Analysis},
+  volume  = {97},
+  pages   = {103262},
+  year    = {2024},
+  issn    = {1361-8415},
+  doi     = {10.1016/j.media.2024.103262},
+  url     = {https://www.sciencedirect.com/science/article/pii/S1361841524001877},
+  author  = {Takeaki Kadota and Hideaki Hayashi and Ryoma Bise and Kiyohito Tanaka and Seiichi Uchida}
 }
 ```
