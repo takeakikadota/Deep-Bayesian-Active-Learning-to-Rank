@@ -45,6 +45,7 @@ Deep-Bayesian-Active-Learning-to-Rank/
 ├── Data/
 │   └── UC/
 │       └── LIMUC/
+│           ├── Images/
 │           └── Preprocessing/
 │               ├── 1_prepare_uc_image_dataset.py
 │               ├── 2_create_patient_level_splits.py
