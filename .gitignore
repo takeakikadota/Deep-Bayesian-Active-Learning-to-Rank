@@ -15,7 +15,8 @@ Thumbs.db
 *~
 
 # Dataset files
-Data/UC/LIMUC/Images/
+Data/UC/LIMUC/Images/*
+!Data/UC/LIMUC/Images/.gitkeep
 
 # Generated active-learning datasets
 Experiments/Ranknet/Bayesian/LIMUC/Add_dataset/
