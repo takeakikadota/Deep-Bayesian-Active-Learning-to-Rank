@@ -45,12 +45,6 @@ Deep-Bayesian-Active-Learning-to-Rank/
 ├── Data/
 │   └── UC/
 │       └── LIMUC/
-│           ├── Images/
-│           │   ├── patient_based_classified_images/
-│           │   ├── all_public_UC_images/
-│           │   ├── original_splits/
-│           │   └── dataset/
-│           │
 │           └── Preprocessing/
 │               ├── 1_prepare_uc_image_dataset.py
 │               ├── 2_create_patient_level_splits.py
@@ -61,18 +55,6 @@ Deep-Bayesian-Active-Learning-to-Rank/
     └── Ranknet/
         └── Bayesian/
             └── LIMUC/
-                ├── Add_dataset/
-                │   └── LIMUC_AL_001/
-                │       ├── AL_0/
-                │       ├── AL_1/
-                │       ├── AL_2/
-                │       └── ...
-                │
-                ├── Results/
-                │   ├── <result_date>_AL_0/
-                │   ├── <result_date>_AL_1/
-                │   └── ...
-                │
                 └── Scripts/
                     ├── 1_initial_learning_make_pair.py
                     ├── 2_train_bayesian_ranknet.py
@@ -87,6 +69,8 @@ Deep-Bayesian-Active-Learning-to-Rank/
                     ├── box_plot.py
                     └── scatter_plot.py
 ```
+
+Dataset directories, active-learning datasets (`Add_dataset/`), and experiment results (`Results/`) are generated during preprocessing and experiment execution.
 
 ## Usage
 
