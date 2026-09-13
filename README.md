@@ -2,7 +2,7 @@
 
 Code for the paper:
 
-**Deep Bayesian Active Learning-to-Rank with Relative Annotation for Estimation of Ulcerative Colitis Severity**
+**Deep Bayesian active learning-to-rank with relative annotation for estimation of ulcerative colitis severity**
 
 - Medical Image Analysis, 2024
 - DOI: https://doi.org/10.1016/j.media.2024.103262
