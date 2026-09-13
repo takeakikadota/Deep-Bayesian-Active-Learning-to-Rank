@@ -1,4 +1,4 @@
-import sys
+import argparse
 import pandas as pd
 import numpy as np
 
@@ -28,6 +28,10 @@ import numpy as np
 #       <datatype>_mean_score_and_uncertainty.csv
 #
 # The prediction variance is used as the uncertainty score.
+#
+# Example:
+#   python 4_calculate_uncertainty.py <result_date>
+#   e.g., python 4_calculate_uncertainty.py 20260825_161805_AL_0
 # ============================================================
 
 def calculate_uncertainty():
@@ -61,9 +65,14 @@ def calculate_uncertainty():
 
 
 if __name__ == "__main__":
-    args = sys.argv
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "result_date",
+        help="Result directory containing prediction score files.",
+    )
+    args = parser.parse_args()
 
-    result_date = str(args[-1])
+    result_date = args.result_date
 
     fold_lst = [1, 2, 3, 4, 5]
     datatype_lst = ["train", "valid", "test"]

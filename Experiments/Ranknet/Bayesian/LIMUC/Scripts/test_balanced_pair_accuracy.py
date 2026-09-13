@@ -5,7 +5,6 @@ import random
 import numpy as np
 import pandas as pd
 
-
 # ============================================================
 # Evaluate balanced pairwise ranking accuracy
 #
@@ -34,10 +33,15 @@ import pandas as pd
 #
 # Fold-wise detailed CSV/TXT files can also be saved
 # with the --save-details option.
+#
+# Example:
+#   python test_balanced_pair_accuracy.py <result_date>
+#   e.g., python test_balanced_pair_accuracy.py 20260825_161805_AL_0
+#
+# With fold-wise detailed outputs:
+#   python test_balanced_pair_accuracy.py 20260825_161805_AL_0 --save-details
 # ============================================================
 
-
-DEFAULT_DATASET = "LIMUC"
 DEFAULT_DATATYPE = "test"
 ALL_MODES = ["all", "neighbor", "0_1", "1_2", "2_3"]
 
@@ -212,7 +216,7 @@ def evaluate_fold(root_dir, datatype, fold, modes, save_details=False):
     ]
 
 
-def save_summaries(results_root, result_date, dataset, datatype, fold_results, modes):
+def save_summaries(results_root, result_date, datatype, fold_results, modes):
     result_dir = os.path.join(results_root, result_date)
     os.makedirs(result_dir, exist_ok=True)
 
@@ -271,11 +275,6 @@ def main():
         description="Balanced pair accuracy evaluation using MC Dropout mean_score."
     )
     parser.add_argument(
-        "dataset",
-        nargs="?",
-        default=DEFAULT_DATASET,
-    )
-    parser.add_argument(
         "result_date",
         help="Result directory containing MC Dropout prediction summaries.",
     )
@@ -318,7 +317,6 @@ def main():
     save_summaries(
         args.results_root,
         args.result_date,
-        args.dataset,
         args.datatype,
         results,
         modes,

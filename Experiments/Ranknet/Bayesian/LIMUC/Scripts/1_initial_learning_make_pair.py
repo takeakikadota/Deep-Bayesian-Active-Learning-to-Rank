@@ -5,24 +5,23 @@ import copy
 import numpy as np
 import pandas as pd
 
-
 # ============================================================
 # Create the initial Active Learning dataset (AL_0)
 #
-# 1. Read the full train / valid image list from:
-#      Images/training_dataset/<fold>_<datatype>.csv
+# 1. Read the train / valid image lists from:
+#      Data/UC/LIMUC/Images/training_dataset/
 #
-# 2. Randomly select 20% of images.
+# 2. Randomly select 20% of images from each split.
 #
 # 3. Create one random non-self pair for each selected image.
 #
-# 4. Save both:
-#      - selected image CSV
-#      - pair CSV
+# 4. Save:
+#      - selected image CSVs
+#      - pair CSVs for RankNet training
 #
 # Output:
 # Add_dataset/
-#   <al_id>/
+#   LIMUC_AL_001/
 #     AL_0/
 #       fold_<fold>/
 #         RBS/
@@ -30,6 +29,9 @@ import pandas as pd
 #           <fold>_<datatype>_pair_RBS.csv
 #
 # In this implementation, AL_0 uses random sampling (RBS).
+#
+# Example:
+#   python 1_initial_learning_make_pair.py
 # ============================================================
 
 SEED = 220428

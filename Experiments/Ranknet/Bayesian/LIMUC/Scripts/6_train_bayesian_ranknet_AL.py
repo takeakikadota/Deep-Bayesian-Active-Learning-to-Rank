@@ -20,38 +20,31 @@ from keras.optimizers import Adam
 from bayesian_densenet import DenseNet169
 from callbacks import makecallbacks
 
-
 # ============================================================
 # Bayesian RankNet training for cumulative Active Learning
 #
-# AL_0:
-#   - reads initial 20% RBS pair CSVs
-#   - starts from ImageNet-pretrained Bayesian DenseNet169
-#
-# AL_1 and later:
-#   - reads cumulative pair CSVs created by
+# In this implementation, AL_1 and later:
+#   - read cumulative pair CSVs created by
 #       5_active_learning_make_pair.py
-#   - supports UBS or RBS cumulative datasets
-#   - ALWAYS loads the best weights from the fixed AL_0 result
-#   - trains each AL iteration independently from the same AL_0 initialization
+#   - support UBS (default) or RBS
+#   - always load the best weights from the fixed AL_0 result
+#   - train each iteration independently from the same AL_0
+#     initialization
 #
 # Example:
-#   AL_0:
-#     python 6_train_bayesian_ranknet_AL.py LIMUC --iteration 0
-#
 #   AL_1 (UBS):
-#     python 6_train_bayesian_ranknet_AL.py LIMUC \
-#       --iteration 1 \
-#       --selection UBS \
+#     python 6_train_bayesian_ranknet_AL.py --iteration 1 \
 #       --initial-result-date 20260825_161805_AL_0
 #
 #   AL_2 (UBS):
-#     python 6_train_bayesian_ranknet_AL.py LIMUC \
-#       --iteration 2 \
-#       --selection UBS \
+#     python 6_train_bayesian_ranknet_AL.py --iteration 2 \
+#       --initial-result-date 20260825_161805_AL_0
+#
+#   AL_1 (RBS):
+#     python 6_train_bayesian_ranknet_AL.py --iteration 1 \
+#       --selection RBS \
 #       --initial-result-date 20260825_161805_AL_0
 # ============================================================
-
 
 class BatchGenerator(keras.utils.Sequence):
     def __init__(
@@ -472,11 +465,6 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "dataset",
-        nargs="?",
-        default="LIMUC",
-    )
-    parser.add_argument(
         "--al-id",
         default="LIMUC_AL_001",
     )
@@ -548,7 +536,7 @@ if __name__ == "__main__":
             "(for example: 20260825_161805_AL_0)."
         )
 
-    dataset_name = args.dataset
+    dataset_name = "LIMUC"
     al_id = args.al_id
     iteration = args.iteration
     selection = args.selection
@@ -557,10 +545,7 @@ if __name__ == "__main__":
     add_dataset_root = args.add_dataset_root
     results_root = args.results_root
 
-    if dataset_name == "LIMUC":
-        image_data_file = "all_public_UC_images"
-    else:
-        image_data_file = "scale_UC_0224"
+    image_data_file = "all_public_UC_images"
 
     data_path = (
         "./../../../../../Data/UC/"

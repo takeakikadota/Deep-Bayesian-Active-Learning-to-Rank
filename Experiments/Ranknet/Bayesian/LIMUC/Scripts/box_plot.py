@@ -1,11 +1,10 @@
+import argparse
 import os
-import sys
 
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from matplotlib import ticker
-
 
 # ============================================================
 # Visualize RankNet score distributions by Mayo score
@@ -15,7 +14,7 @@ from matplotlib import ticker
 #
 # 2. Group prediction scores by Mayo score (M0-M3).
 #
-# 3. Plot the score distributions using boxplots and
+# 3. Plot the score distributions using boxplots with
 #    overlaid individual data points.
 #
 # Output:
@@ -23,8 +22,11 @@ from matplotlib import ticker
 #   <result_date>/
 #     fold_<fold>/
 #       <datatype>_box_plot.pdf
+#
+# Example:
+#   python box_plot.py <result_date>
+#   e.g., python box_plot.py 20260825_161805_AL_0
 # ============================================================
-
 
 def pltsettings(fontsize=10, figsize=(4, 3)):
     """
@@ -142,7 +144,14 @@ def box_plot(result_path, datatype, class_names):
 
 
 if __name__ == "__main__":
-    result_date = str(sys.argv[-1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "result_date",
+        help="Result directory containing prediction summary files.",
+    )
+    args = parser.parse_args()
+
+    result_date = args.result_date
 
     sns.set()
     sns.set_style("whitegrid")

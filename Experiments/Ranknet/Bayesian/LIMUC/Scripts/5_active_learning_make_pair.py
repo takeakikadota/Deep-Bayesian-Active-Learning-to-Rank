@@ -5,7 +5,6 @@ import random
 import numpy as np
 import pandas as pd
 
-
 # ============================================================
 # Select Active Learning samples and create cumulative pairs
 #
@@ -40,13 +39,13 @@ import pandas as pd
 #       <datatype>_mean_score_and_uncertainty.csv
 #
 # Add_dataset/
-#   <al_id>/
+#   LIMUC_AL_001/
 #     AL_<previous_iteration>/
 #       ...
 #
 # Output:
 # Add_dataset/
-#   <al_id>/
+#   LIMUC_AL_001/
 #     AL_<iteration>/
 #       active_learning_summary_AL_<iteration>.csv
 #       active_learning_condition_AL_<iteration>.csv
@@ -58,8 +57,12 @@ import pandas as pd
 #
 # Previously selected images are excluded from subsequent
 # Active Learning sampling.
+#
+# Example:
+#   python 5_active_learning_make_pair.py <result_date> --iteration <iteration>
+#   e.g., python 5_active_learning_make_pair.py 20260825_161805_AL_0 --iteration 1
+#         python 5_active_learning_make_pair.py 20260826_101500_AL_1 --iteration 2
 # ============================================================
-
 
 DEFAULT_SELECT_RATE = 0.05
 DEFAULT_SELECTION = "UBS"

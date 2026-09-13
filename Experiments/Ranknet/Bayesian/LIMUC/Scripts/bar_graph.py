@@ -1,12 +1,11 @@
+import argparse
 import os
-import sys
 import random
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib import ticker
-
 
 # ============================================================
 # Compare Mayo score distributions of selected samples
@@ -26,8 +25,11 @@ from matplotlib import ticker
 #   <result_date>/
 #     fold_<fold>/
 #       <datatype>_class_imbalance.pdf
+#
+# Example:
+#   python bar_graph.py <result_date>
+#   e.g., python bar_graph.py 20260825_161805_AL_0
 # ============================================================
-
 
 SELECT_RATE = 0.05
 RANDOM_SEED = 0
@@ -163,7 +165,14 @@ def graph(result_path, datatype):
 
 
 if __name__ == "__main__":
-    result_date = str(sys.argv[-1])
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "result_date",
+        help="Result directory containing prediction summary files.",
+    )
+    args = parser.parse_args()
+
+    result_date = args.result_date
 
     fold_lst = [1, 2, 3, 4, 5]
     datatype_lst = ["train", "valid", "test"]

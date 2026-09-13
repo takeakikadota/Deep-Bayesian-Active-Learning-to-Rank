@@ -26,7 +26,8 @@ from callbacks import makecallbacks
 # 1. Read the train / valid pair datasets created by:
 #      1_initial_learning_make_pair.py
 #
-# 2. Train Bayesian RankNet using the initial 20% dataset.
+# 2. Train Bayesian RankNet using the initial randomly sampled
+#    20% dataset.
 #
 # 3. Keep dropout active in the ranking model for
 #    Monte Carlo Dropout-based uncertainty estimation.
@@ -38,7 +39,7 @@ from callbacks import makecallbacks
 #
 # Input:
 # Add_dataset/
-#   <al_id>/
+#   LIMUC_AL_001/
 #     AL_0/
 #       fold_<fold>/
 #         RBS/
@@ -55,6 +56,12 @@ from callbacks import makecallbacks
 #
 # In this implementation, AL_0 is trained using the
 # initial randomly sampled 20% dataset.
+#
+# Example:
+#   python 2_train_bayesian_ranknet.py
+#
+# Example with selected folds:
+#   python 2_train_bayesian_ranknet.py --folds 1,2,3
 # ============================================================
 
 # batchgenerator
@@ -308,12 +315,6 @@ if __name__ == "__main__":
         description="Train the initial Bayesian RankNet on the AL_0 20% pair dataset."
     )
     parser.add_argument(
-        "dataset",
-        nargs="?",
-        default="LIMUC",
-        help="Dataset name. Default: LIMUC"
-    )
-    parser.add_argument(
         "--al-id",
         default="LIMUC_AL_001",
         help="Active Learning experiment ID. Default: LIMUC_AL_001"
@@ -345,16 +346,13 @@ if __name__ == "__main__":
     )
     cli_args = parser.parse_args()
 
-    dataset_name = cli_args.dataset
+    dataset_name = "LIMUC"
     al_id = cli_args.al_id
     selection = cli_args.selection
     add_dataset_root = cli_args.add_dataset_root
 
     # image_data_file
-    if dataset_name == "LIMUC":
-        image_data_file = "all_public_UC_images"
-    else:
-        image_data_file = "scale_UC_0224"
+    image_data_file = "all_public_UC_images"
 
     # image path
     data_path = "./../../../../../Data/UC/{}/Images".format(dataset_name)
