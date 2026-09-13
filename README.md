@@ -12,7 +12,7 @@ Code for the paper:
 
 This repository uses the public **LIMUC (Labeled Images for Ulcerative Colitis) dataset**:
 
-https://zenodo.org/records/5827695
+https://doi.org/10.5281/zenodo.5827695
 
 Please use the `patient_based_classified_images` directory included in the LIMUC dataset.
 
@@ -79,7 +79,7 @@ Dataset directories, active-learning datasets (`Add_dataset/`), and experiment r
 
 Download the LIMUC dataset from:
 
-https://zenodo.org/records/5827695
+https://doi.org/10.5281/zenodo.5827695
 
 Use the `patient_based_classified_images` directory and place it at:
 
